@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t sunkay/k8-travis -f Dockerfile.dev .
+
+script:
+  - docker run sunkay/k8-travis npm run test -- --coverage
